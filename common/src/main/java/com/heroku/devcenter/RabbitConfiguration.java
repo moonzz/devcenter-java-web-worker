@@ -23,7 +23,7 @@ public class RabbitConfiguration {
     public ConnectionFactory connectionFactory() {
         final URI ampqUrl;
         try {
-            ampqUrl = new URI(getEnvOrThrow("amqps://urqmvftm:xcQ_MgX9mkKkML_ADk_TH_iGLU-7FDvH@chimpanzee.rmq.cloudamqp.com/urqmvftm"));
+            ampqUrl = new URI(getEnvOrThrow("CLOUDAMQP_URL"));
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
