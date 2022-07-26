@@ -23,7 +23,7 @@ public class RabbitConfiguration {
     public ConnectionFactory connectionFactory() {
         final URI ampqUrl;
         try {
-            ampqUrl = new URI(getEnvOrThrow("CLOUDAMQP_URL"));
+            ampqUrl = new URI(getEnvOrThrow("amqps://urqmvftm:xcQ_MgX9mkKkML_ADk_TH_iGLU-7FDvH@chimpanzee.rmq.cloudamqp.com/urqmvftm"));
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -47,7 +47,8 @@ public class RabbitConfiguration {
     public RabbitTemplate rabbitTemplate() {
         RabbitTemplate template = new RabbitTemplate(connectionFactory());
         template.setRoutingKey(this.helloWorldQueueName);
-        template.setQueue(this.helloWorldQueueName);
+        //template.setQueue(this.helloWorldQueueName);
+        template.setDefaultReceiveQueue(this.helloWorldQueueName);
         return template;
     }
 
